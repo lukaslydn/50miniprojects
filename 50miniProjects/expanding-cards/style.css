@@ -1,0 +1,72 @@
+* {
+    box-sizing: border-box;  /* removes the outside borders */
+  }
+
+body {
+    font-family: sans-serif; /* sets the font*/
+    display: flex; /* sets the display to flex */
+    align-items: center; /* aligns items center on the cross axis*/
+    justify-content: center; /* aligns items center on the main axis */
+    height: 100vh; /* sets the height to 100vh (max height) */
+    overflow: hidden; /* anything outside the div is hidden */
+    margin: 0; /* removes margin */
+  }
+  
+
+.container {
+    display: flex; /* sets the display to flex */
+    width: 90vw; /* sets the height to 90% of screen*/
+  }
+
+.panel {
+    background-size: cover; /* background image covers the div */
+    background-position: center; /* centers the background image */
+    background-repeat: no-repeat; /* prevents background repeating */
+    height: 80vh; /* sets the height to 80% of the screen */
+    border-radius: 50px; /* rounds the corners */
+    color: #fff;
+    cursor: pointer;
+    flex: 0.5; /* The item can grow to take up available space, but only at half the rate of an item with flex: 1 */
+    margin: 10px; /* adds space between each element */
+    position: relative; 
+    transition: all 700ms ease-in;
+}
+
+.panel h1 {
+    font-size: 24px;
+    position: absolute; /* absolute position takes it out of document flow */
+    bottom: 20px; /* 20px from the bottom*/
+    left: 20px; /* 20px from the left */
+    margin: 0;
+    opacity: 0; 
+}
+
+.panel.active {
+    flex: 6;
+}
+
+
+/* 
+
+How the space is distributed:
+Total flex units = 6 + (0.5 * 4) = 5 + 2 = 7
+Each unit represents 1/7th of the available space.
+The element with flex: 5 gets 5/7 of the available space.
+Each of the four elements with flex: 0.5 gets 0.5/7 of the available space.
+
+*/
+
+.panel.active h1 { /* h1 when its parent panel is active */
+    opacity: 1; /* makes it visable */
+    transition: opacity 0.3s ease-in 0.4s; /* smooth transistion*/
+}
+  
+@media (max-width: 480px) { /* when the width is less than 481px */
+    .container { /* apply following propertys */
+      width: 100vw;  /* allows the full screen to be used*/
+      height: 50vh; /*  height is half the screen */
+    }
+    .panel {
+      height: 50vh;
+    }
+}

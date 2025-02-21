@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css"> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <dialog id="popup">
+        <h1>Please fill in all fields to login</h1>
+        <button id="close-popup" autofocus>Close</button>
+    </dialog>
+    <div class="container">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <div class="form">
+                <input type="text" id="username" autocomplete="off">
+                <label id='email' for="username">Email</label>
+            </div>
+            <div class="form">
+                <input type="password" id="password" >
+                <label for="password">Password</label>
+            </div>
+        </form>
+        <button id='btn'>Login</button>
+        <p>Dont have an account? <a href="#">Register</a></p>
+    </div> 
+    <script src="script.js"></script>
+</body>
+</html>

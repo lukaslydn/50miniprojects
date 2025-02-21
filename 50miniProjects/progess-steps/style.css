@@ -1,0 +1,122 @@
+* {
+    box-sizing: border-box; /* makes the borders inside  */
+}
+
+:root {
+    --primary-color: rgb(37, 153, 248); /* makes the var for reuseablality */
+    --line-border-empty: rgb(195, 195, 195);
+}
+
+body {
+    font-family: sans-serif; /* sets the font*/
+    display: flex; /* sets the display to flex */
+    align-items: center; /* aligns items center on the cross axis*/
+    justify-content: center; /* aligns items center on the main axis */
+    height: 100vh; /* sets the height to 100vh (max height) */
+    overflow: hidden; /* anything outside the div is hidden */
+    margin: 0; /* removes margin */
+}
+
+.container {
+    text-align: center; /* aligns the text in the center (button in this case) */
+    width: 70%;
+}
+.progress-container { 
+    display: flex;
+    justify-content: space-between; /* spaces the items */
+    position: relative; /* keeps it in the flow */
+    margin-bottom: 30px; 
+    width: 100%; /* takes up all space*/
+  }
+
+  /* below adds the empty progress bar */
+.progress-container::before { 
+    content: ''; /* content */
+    background-color: var(--line-border-empty); 
+    position: absolute; /* if content is '' use absolute to make it visable*/
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%); /* poisiton the bar */
+    height: 4px;
+    width: 100%; /* fills whole parent div*/
+    z-index: -1; /* send to back */
+  }
+  
+.progress { /* the progress bar that changes based on step selected (javascript)*/
+    /* same as above */
+    background-color: var(--primary-color);
+    position: absolute; 
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 0%;
+    z-index: -1;
+    transition: 0.4s ease;
+}
+
+
+.step {
+    /* creates the circle*/
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 3px solid var(--line-border-empty);
+    transition: all 0.3s ease-in-out;
+}
+
+.step.active { /* changes border color to match progress bar */
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 3px solid var(--primary-color);
+}
+
+.btn {
+    font-size: 1rem;
+    width: 30%;
+    padding: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+    letter-spacing: 1.5px;
+    box-shadow: 0 2px 10px 0 var(--primary-color);
+}
+
+.btn:active:enabled {
+    transform: translateY(5px);
+    box-shadow: 0 0 0 0;
+    transition: all 100ms ease-in-out;
+}
+
+.btn:disabled {
+    letter-spacing: 0;
+    box-shadow: 0 0 0 0;
+    background-color: rgba(37, 153, 248, 0.5);
+    cursor: not-allowed;
+}
+
+@media (max-width: 800px) { /* if width of device is below 801px */
+    .btn {
+        width: 30%; 
+    }
+    .container {
+        width: 90%;
+    }
+
+}
